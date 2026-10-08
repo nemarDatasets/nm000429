@@ -1,0 +1,8 @@
+{
+  "anatomical_label": {
+    "Description": "Contact type and target structure (article)"
+  },
+  "hemisphere": {
+    "Description": "Side of the recorded subthalamic nucleus (L/R), from the behaviour file names (STNL/STNR); n/a if the channel name was used on both sides in different runs"
+  }
+}

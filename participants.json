@@ -1,0 +1,18 @@
+{
+  "source_id": {
+    "Description": "Subject folder in the Dryad release"
+  },
+  "age": {
+    "Description": "Not in the Dryad release (article Supplementary file 1 has demographics)",
+    "Units": "year"
+  },
+  "sex": {
+    "Description": "Not in the Dryad release (article Supplementary file 1)"
+  },
+  "diagnosis": {
+    "Description": "Parkinson's disease, STN DBS implantation (article)"
+  },
+  "recorded_hemisphere": {
+    "Description": "STN side(s) recorded, from the behaviour file names (STNL/STNR)"
+  }
+}

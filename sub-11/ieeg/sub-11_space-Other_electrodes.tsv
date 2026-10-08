@@ -1,0 +1,5 @@
+name	x	y	z	size	group	anatomical_label	hemisphere
+CMacro_RAW_01	n/a	n/a	n/a	n/a	STN	macro contact on a subthalamic nucleus trajectory (article); channel name used for both sides in different runs (see each run's iEEGPlacementScheme)	n/a
+CMacro_RAW_02	n/a	n/a	n/a	n/a	STN	macro contact on a subthalamic nucleus trajectory (article); channel name used for both sides in different runs (see each run's iEEGPlacementScheme)	n/a
+CRAW_01	n/a	n/a	n/a	n/a	STN	microelectrode tip on a subthalamic nucleus trajectory (article); channel name used for both sides in different runs (see each run's iEEGPlacementScheme)	n/a
+CRAW_02	n/a	n/a	n/a	n/a	STN	microelectrode tip on a subthalamic nucleus trajectory (article); channel name used for both sides in different runs (see each run's iEEGPlacementScheme)	n/a

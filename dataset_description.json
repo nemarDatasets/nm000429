@@ -1,0 +1,51 @@
+{
+  "Name": "Human subthalamic nucleus microelectrode recordings during an interrupted reach task (London et al., 2021)",
+  "BIDSVersion": "1.10.0",
+  "DatasetType": "raw",
+  "License": "CC0-1.0",
+  "Authors": [
+    "Dennis London",
+    "Arash Fazl",
+    "Kalman Katlowitz",
+    "Marisol Soula",
+    "Michael Pourfar",
+    "Alon Mogilner",
+    "Roozbeh Kiani"
+  ],
+  "EthicsApprovals": [
+    "NYU School of Medicine Office of Science and Research Institutional Review Board, Study ID S16-01855 (article)"
+  ],
+  "Funding": [
+    "NIMH R01 MH109180",
+    "McKnight Scholar Award",
+    "Simons Collaboration on the Global Brain 542997, 543009",
+    "Pew Scholarship in the Biomedical Sciences"
+  ],
+  "HowToAcknowledge": "Cite London D, Fazl A, Katlowitz K, Soula M, Pourfar MH, Mogilner AY, Kiani R (2021) Distinct population code for movement kinematics and changes of ongoing movements in human subthalamic nucleus. eLife 10:e64893, doi:10.7554/eLife.64893; and the Dryad dataset doi:10.5061/dryad.2jm63xsq2.",
+  "ReferencesAndLinks": [
+    "https://doi.org/10.7554/eLife.64893",
+    "https://doi.org/10.5061/dryad.2jm63xsq2",
+    "https://github.com/dlondon12/InterruptedReachClustMass"
+  ],
+  "Keywords": [
+    "subthalamic nucleus",
+    "microelectrode recording",
+    "single units",
+    "local field potential",
+    "Parkinson's disease",
+    "reaching",
+    "movement change"
+  ],
+  "SourceDatasets": [
+    {
+      "DOI": "doi:10.5061/dryad.2jm63xsq2",
+      "URL": "https://datadryad.org/dataset/doi:10.5061/dryad.2jm63xsq2"
+    }
+  ],
+  "GeneratedBy": [
+    {
+      "Name": "b3w10_convert_stnint.py",
+      "Description": "Alpha Omega MATLAB export RAW streams (int16) scaled to µV with the stored BitResolution/Gain, written as BrainVision float32; port/TTL events to events.tsv. Code in code/."
+    }
+  ]
+}

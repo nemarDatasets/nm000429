@@ -1,0 +1,27 @@
+{
+  "onset": {
+    "Description": "Seconds from the first sample of the RAW streams of this run",
+    "Units": "s"
+  },
+  "duration": {
+    "Description": "0 (instantaneous)",
+    "Units": "s"
+  },
+  "trial_type": {
+    "Description": "Event source",
+    "Levels": {
+      "port": "digital port word change (CPORT__1)",
+      "ttl_up": "rising edge on a digital input (CDIG_IN_x_Up)"
+    }
+  },
+  "value": {
+    "Description": "port: the port word (CPORT__1 row 2); ttl_up: the stored _Up sample number"
+  },
+  "sample": {
+    "Description": "onset x sampling frequency (0-based)"
+  },
+  "source_channel": {
+    "Description": "Alpha Omega channel the event comes from"
+  },
+  "_note": "port onsets = CPORT__1 timestamp / port clock rate - TimeBegin of the RAW streams (all Alpha Omega timestamps are on one clock). ttl_up onsets = CDIG_IN TimeBegin - RAW TimeBegin + (Up - 1) / digital rate; the first stored Up value is 1, i.e. the digital channel's TimeBegin is taken as the time of sample 1. The task code mapping of port words is in the behaviour files (sourcedata)."
+}

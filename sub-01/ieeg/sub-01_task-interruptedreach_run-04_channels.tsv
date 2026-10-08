@@ -1,0 +1,5 @@
+name	type	units	low_cutoff	high_cutoff	sampling_frequency	reference	group	status	status_description	description
+CRAW_01	SEEG	µV	n/a	n/a	44000.0	n/a	STNR	good	n/a	microelectrode tip, wideband RAW stream; int16 x BitResolution 38.14697265625 / Gain 20.0
+CRAW_02	SEEG	µV	n/a	n/a	44000.0	n/a	STNR	good	n/a	microelectrode tip, wideband RAW stream; int16 x BitResolution 38.14697265625 / Gain 20.0
+CMacro_RAW_01	SEEG	µV	n/a	n/a	44000.0	n/a	STNR	good	n/a	macro contact of the same lead, wideband RAW stream; int16 x BitResolution 38.14697265625 / Gain 20.0
+CMacro_RAW_02	SEEG	µV	n/a	n/a	44000.0	n/a	STNR	good	n/a	macro contact of the same lead, wideband RAW stream; int16 x BitResolution 38.14697265625 / Gain 20.0

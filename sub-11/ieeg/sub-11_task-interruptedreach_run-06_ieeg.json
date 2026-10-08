@@ -1,0 +1,22 @@
+{
+  "TaskName": "interruptedreach",
+  "TaskDescription": "Interrupted reach task on a touchscreen: reach to a target; on some trials the target jumps mid-movement and the participant must change the ongoing movement (article).",
+  "PowerLineFrequency": 60,
+  "SoftwareFilters": "n/a",
+  "HardwareFilters": "n/a",
+  "iEEGReference": "Outer cannula of the microelectrode (article: Recordings were referenced to the outer cannula)",
+  "iEEGPlacementScheme": "Intraoperative microelectrode recording in the right subthalamic nucleus during DBS surgery (behaviour file name STNR); task performed with the left hand",
+  "Manufacturer": "Alpha Omega",
+  "ManufacturersModelName": "n/a (Alpha Omega MATLAB export; Neuroprobe Sonus shielded tungsten microelectrodes, 1 MOhm, per the article)",
+  "ElectricalStimulation": false,
+  "SamplingFrequency": 44000.0,
+  "RecordingDuration": 649.066545,
+  "RecordingType": "continuous",
+  "ECOGChannelCount": 0,
+  "SEEGChannelCount": 4,
+  "DBSChannelCount": 0,
+  "EEGChannelCount": 0,
+  "EMGChannelCount": 0,
+  "MiscChannelCount": 0,
+  "TriggerChannelCount": 0
+}

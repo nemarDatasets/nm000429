@@ -1,0 +1,9 @@
+participant_id	source_id	age	sex	diagnosis	recorded_hemisphere
+sub-01	Sub01	n/a	n/a	Parkinson's disease	right
+sub-02	Sub02	n/a	n/a	Parkinson's disease	left
+sub-04	Sub04	n/a	n/a	Parkinson's disease	right
+sub-07	Sub07	n/a	n/a	Parkinson's disease	left
+sub-08	Sub08	n/a	n/a	Parkinson's disease	left
+sub-09	Sub09	n/a	n/a	Parkinson's disease	left
+sub-11	Sub11	n/a	n/a	Parkinson's disease	left,right
+sub-13	Sub13	n/a	n/a	Parkinson's disease	right
