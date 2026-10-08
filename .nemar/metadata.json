@@ -1,0 +1,134 @@
+{
+  "version": "2.0",
+  "pipeline_stage": "validated",
+  "authors": {
+    "Dennis London": {
+      "orcid": "0000-0001-8134-2683",
+      "affiliations": [
+        {
+          "name": "New York University",
+          "identifier": "https://ror.org/0190ak572",
+          "scheme": "ROR"
+        }
+      ]
+    },
+    "Arash Fazl": {},
+    "Kalman Katlowitz": {
+      "orcid": "0000-0001-5568-6343",
+      "affiliations": [
+        {
+          "name": "Department of Neurosurgery, Center for Neuromodulation, NYU Langone Health, New York, United States"
+        },
+        {
+          "name": "Neuroscience Institute, NYU Langone Health, New York, United States"
+        }
+      ]
+    },
+    "Marisol Soula": {},
+    "Michael Pourfar": {},
+    "Alon Mogilner": {},
+    "Roozbeh Kiani": {
+      "orcid": "0000-0003-0614-6791",
+      "affiliations": [
+        {
+          "name": "New York University",
+          "identifier": "https://ror.org/0190ak572",
+          "scheme": "ROR"
+        }
+      ]
+    }
+  },
+  "related_identifiers": [
+    {
+      "identifier": "10.5061/dryad.2jm63xsq2",
+      "identifier_type": "DOI",
+      "relation_type": "IsDerivedFrom"
+    },
+    {
+      "identifier": "10.7554/eLife.64893",
+      "identifier_type": "DOI",
+      "relation_type": "IsDescribedBy"
+    },
+    {
+      "identifier": "https://github.com/nemarDatasets/nm000429",
+      "identifier_type": "URL",
+      "relation_type": "IsDescribedBy"
+    },
+    {
+      "identifier": "https://nemar.org/dataset/nm000429",
+      "identifier_type": "URL",
+      "relation_type": "IsDescribedBy"
+    }
+  ],
+  "funding_references": [
+    {
+      "funder_name": "McKnight Scholar Award"
+    },
+    {
+      "funder_name": "Pew Scholarship in the Biomedical Sciences"
+    },
+    {
+      "funder_name": "NIMH",
+      "award_number": "R01 MH109180"
+    },
+    {
+      "funder_name": "Simons Collaboration on the Global Brain",
+      "award_number": "542997, 543009"
+    }
+  ],
+  "title": "Human subthalamic nucleus microelectrode recordings during an interrupted reach task (London et al., 2021)",
+  "license": "CC0-1.0",
+  "dataset_type": "raw",
+  "resource_type_general": "Dataset",
+  "modalities": [
+    "ieeg"
+  ],
+  "resource_type_specific": "iEEG Dataset",
+  "sizes": [
+    "10.09 GB (65 files)"
+  ],
+  "formats": [
+    ".eeg",
+    ".json",
+    ".mat",
+    ".py",
+    ".tsv",
+    ".vhdr",
+    ".vmrk"
+  ],
+  "description": "Intraoperative microelectrode recordings from the subthalamic nucleus of patients with Parkinson's disease undergoing deep brain stimulation surgery. Patients performed an extended touchscreen reaching task in which the target sometimes changed mid-movement (interrupted reach). The dataset contains wideband raw microelectrode and macro-contact signals from 8 subjects (16 task blocks, about 2.57 h) with task event markers, converted to BIDS iEEG format.",
+  "methods_description": "Patients were off anti-Parkinsonian medication. One or two Neuroprobe Sonus tungsten microelectrodes (1 MOhm, Alpha Omega), 2 mm apart on a single microdrive, were referenced to the outer cannula. Raw signals were sampled at 44 kHz (22 kHz for Sub04). Alpha Omega int16 streams were scaled to µV and stored as BrainVision float32, with port and TTL events written to events.tsv.",
+  "keywords": [
+    {
+      "term": "Subthalamic Nucleus",
+      "subject_scheme": "MeSH",
+      "value_uri": "http://id.nlm.nih.gov/mesh/D020531"
+    },
+    {
+      "term": "Parkinson Disease",
+      "subject_scheme": "MeSH",
+      "value_uri": "http://id.nlm.nih.gov/mesh/D010300"
+    },
+    {
+      "term": "Deep Brain Stimulation",
+      "subject_scheme": "MeSH",
+      "value_uri": "http://id.nlm.nih.gov/mesh/D046690"
+    },
+    {
+      "term": "microelectrode recording"
+    },
+    {
+      "term": "single units"
+    },
+    {
+      "term": "local field potential"
+    },
+    {
+      "term": "reaching"
+    },
+    {
+      "term": "intracranial EEG"
+    }
+  ],
+  "source_hash": "d07b8e886e665efaa7bb33df7b755d5b4be101aadfaab667422616f44d3dda53"
+}
