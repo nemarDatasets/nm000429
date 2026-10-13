@@ -47,5 +47,7 @@
       "Name": "b3w10_convert_stnint.py",
       "Description": "Alpha Omega MATLAB export RAW streams (int16) scaled to µV with the stored BitResolution/Gain, written as BrainVision float32; port/TTL events to events.tsv. Code in code/."
     }
-  ]
+  ],
+  "DatasetDOI": "10.82901/nemar.nm000429",
+  "Version": "1.0.0"
 }
