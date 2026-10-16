@@ -1,9 +1,9 @@
 {
   "version": "2.0",
   "pipeline_stage": "validated",
-  "title": "Human subthalamic nucleus microelectrode recordings during an interrupted reach task (London et al., 2021)",
-  "description": "Intraoperative microelectrode recordings from the subthalamic nucleus of Parkinson's disease patients undergoing deep brain stimulation surgery. Patients performed an extended touchscreen reaching task in which the target sometimes changed mid-movement (interrupted reach). The release contains wideband raw microelectrode and macro-contact signals from 8 subjects (16 task blocks, about 2.57 h), with task events and source behavioural and spike-sorted data.",
-  "methods_description": "Patients were off anti-Parkinsonian medication. One or two tungsten Neuroprobe Sonus microelectrodes (1 MOhm, Alpha Omega), 2 mm apart on a single microdrive, were referenced to the outer cannula. Raw signals were sampled at 44 kHz (22 kHz for one subject), exported from Alpha Omega, scaled to µV and written as BrainVision float32, with port/TTL events in events.tsv.",
+  "title": "London-2021-distinct-10.7554/elife.64893",
+  "description": "Intraoperative microelectrode recordings from the subthalamic nucleus of Parkinson's disease patients undergoing deep brain stimulation surgery. Patients, off anti-Parkinsonian medication, performed an extended touchscreen reaching task in which the target sometimes changed mid-movement (interrupted reach). The dataset includes wideband raw microelectrode and macro-contact streams from 8 subjects, with task event markers, in BIDS iEEG format.",
+  "methods_description": "One or two tungsten microelectrodes (Neuroprobe Sonus, 1 MOhm, Alpha Omega), 2 mm apart on a single microdrive, were used for recording, referenced to the outer cannula. Raw signals were sampled at 44 kHz (22 kHz for one subject). Alpha Omega MATLAB exports were scaled to µV and written as BrainVision float32, with port/TTL events converted to events.tsv.",
   "license": "CC0-1.0",
   "dataset_type": "raw",
   "authors": {
@@ -45,15 +45,13 @@
   },
   "keywords": [
     {
-      "term": "intracranial electrophysiology"
+      "term": "subthalamic nucleus"
     },
     {
       "term": "microelectrode recording"
     },
     {
-      "term": "Subthalamic Nucleus",
-      "subject_scheme": "MeSH",
-      "value_uri": "http://id.nlm.nih.gov/mesh/D020531"
+      "term": "intracranial EEG"
     },
     {
       "term": "Parkinson Disease",
@@ -61,9 +59,7 @@
       "value_uri": "http://id.nlm.nih.gov/mesh/D010300"
     },
     {
-      "term": "Deep Brain Stimulation",
-      "subject_scheme": "MeSH",
-      "value_uri": "http://id.nlm.nih.gov/mesh/D046690"
+      "term": "deep brain stimulation"
     },
     {
       "term": "reaching movement"
@@ -106,16 +102,8 @@
       "award_number": "R01 MH109180"
     },
     {
-      "funder_name": "McKnight Foundation",
-      "award_title": "McKnight Scholar Award"
-    },
-    {
       "funder_name": "Simons Collaboration on the Global Brain",
       "award_number": "542997, 543009"
-    },
-    {
-      "funder_name": "Pew Charitable Trusts",
-      "award_title": "Pew Scholarship in the Biomedical Sciences"
     }
   ],
   "resource_type_general": "Dataset",
@@ -138,5 +126,5 @@
     ".vmrk",
     ".yml"
   ],
-  "source_hash": "8f2d11fdc757668f4999a4edba57b19ea1aeef345bd40899c5293d6593427372"
+  "source_hash": "78e845855cde3625321ebf6dd4e3fe69d26c261cbd80e425e18800d32fa0224f"
 }
