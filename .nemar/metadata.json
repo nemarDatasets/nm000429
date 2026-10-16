@@ -1,7 +1,7 @@
 {
   "version": "2.0",
   "pipeline_stage": "validated",
-  "title": "London-2021-distinct-10.7554/elife.64893",
+  "title": "Human subthalamic nucleus microelectrode recordings during an interrupted reach task (London et al., 2021)",
   "description": "Intraoperative microelectrode recordings from the subthalamic nucleus of Parkinson's disease patients undergoing deep brain stimulation surgery. Patients, off anti-Parkinsonian medication, performed an extended touchscreen reaching task in which the target sometimes changed mid-movement (interrupted reach). The dataset includes wideband raw microelectrode and macro-contact streams from 8 subjects, with task event markers, in BIDS iEEG format.",
   "methods_description": "One or two tungsten microelectrodes (Neuroprobe Sonus, 1 MOhm, Alpha Omega), 2 mm apart on a single microdrive, were used for recording, referenced to the outer cannula. Raw signals were sampled at 44 kHz (22 kHz for one subject). Alpha Omega MATLAB exports were scaled to µV and written as BrainVision float32, with port/TTL events converted to events.tsv.",
   "license": "CC0-1.0",
@@ -126,5 +126,5 @@
     ".vmrk",
     ".yml"
   ],
-  "source_hash": "78e845855cde3625321ebf6dd4e3fe69d26c261cbd80e425e18800d32fa0224f"
+  "source_hash": "e079e03bee831d5277abbebb8cc2d6f1ca44414db2c114ea4f058eec33c1b584"
 }
