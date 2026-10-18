@@ -1,3 +1,7 @@
+1.0.3 2026-10-19
+  - events.tsv: removed 119 digital-input rows (ttl_up, CDIG_IN_1) after the end of sub-02 run-01 and 99 with negative onsets from sub-02 run-02; each block's .mat holds the digital channel of the whole Alpha Omega file, so these were the other block's events; removed rows kept verbatim in sourcedata/events-removed-2026-10-19/. Signal files unchanged.
+  - README.md: section "Digital-input events of the other block" (also: the Sub02/Block01 time-span mismatch is not a pause; onsets exact).
+
 1.0.2 2026-10-16
   - Restore the descriptive dataset Name recorded in the v1.0.0 history. Update generated metadata title and source hash.
 

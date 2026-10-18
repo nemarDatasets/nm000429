@@ -44,3 +44,23 @@ Age/sex per patient are in the article's Supplementary file 1, which is not link
 ## Privacy
 File names with initials and dates were renamed; MAT headers keep year and month only. String scan of the behaviour .mat
 files: no names, dates or identifiers found.
+
+## Digital-input events of the other block (corrected 2026-10-19, version 1.0.3)
+
+Sub02 Block01 and Block02 (`sub-02` run-01 and run-02) are two exports of one Alpha Omega file (`LT1D5.074F0001_block1.mat`,
+`_block2.mat`). Both .mat files contain the same complete digital-input channel `CDIG_IN_1` (218 identical `_Up`/`_Down`
+values, `CDIG_IN_1_TimeBegin` 2826.774 s, `_TimeEnd` 4158.511 s), while the RAW streams and the port words `CPORT__1` are
+per block. The conversion kept only the port words that fall inside each block but wrote all 218 digital-input edges into both
+`events.tsv`. Up to version 1.0.2, run-01 therefore listed 119 `ttl_up` rows after the end of its data (up to 1426.5 s in a
+677.1 s run) and run-02 listed 99 `ttl_up` rows with negative onsets. Each of these rows is the other block's row: the
+119 run-01 rows equal run-02 rows shifted by the difference of the RAW TimeBegin values (3409.0909 - 2731.9880 s) to within
+1e-12 s, and the 99 run-02 rows equal the 99 `ttl_up` rows inside run-01 (shifted the other way, max difference 1.1e-13 s). They are removed from the BIDS files
+(run-01 keeps 99 `ttl_up` rows, run-02 keeps 119) and kept verbatim in `sourcedata/events-removed-2026-10-19/` (same relative paths). No row inside
+a recording was changed; signal files are unchanged.
+
+The "Timing caveat" above lists Sub02/Block01 with 29792526 samples over a TimeBegin-TimeEnd span of 1634.2 s. That span is
+not a recording pause: `CRAW_xx_TimeEnd` in the Block01 file (4366.143 s) is the end of the whole Alpha Omega file, the
+same value as in the Block02 file, and the Block01 RAW samples at 44 kHz end at 2731.9880 + 677.1029 = 3409.0909 s, which is
+the RAW TimeBegin of Block02 (23 us later, about one sample). The run-01 event onsets are therefore exact over the
+whole run (checked on 2026-10-19 by reading the TimeBegin/TimeEnd/KHz variables and the CDIG_IN_1 vectors of both .mat files
+in sourcedata).
