@@ -34,6 +34,25 @@ Sampling rate = the nominal rate stored per channel (_KHz). In some exports the 
 samples / rate, which indicates recording pauses concatenated in the export; event onsets there are exact only up to the
 first pause: Sub02/Block01: 29792526 samples over TimeBegin-TimeEnd 1634.2 s (18231.1 Hz vs nominal 44000 Hz); Sub04/Block01: 8873514 samples over TimeBegin-TimeEnd 172.2 s (51522.8 Hz vs nominal 22000 Hz); Sub11/Block01: 29672592 samples over TimeBegin-TimeEnd 133.8 s (221785.2 Hz vs nominal 44000 Hz); Sub11/Block05: 26669440 samples over TimeBegin-TimeEnd 139.9 s (190625.3 Hz vs nominal 44000 Hz); Sub11/Block06: 28558928 samples over TimeBegin-TimeEnd 138.0 s (207009.3 Hz vs nominal 44000 Hz); Sub11/Block07: 27740369 samples over TimeBegin-TimeEnd 135.2 s (205178.1 Hz vs nominal 44000 Hz); Sub13/Block02: 30603712 samples over TimeBegin-TimeEnd 139.1 s (219961.2 Hz vs nominal 44000 Hz).
 
+## Task events from the behaviour files (Oct 2026)
+`events.tsv` rows with `source_channel` = `behaviour` hold the trial events of the behaviour .mat files (sourcedata), placed on
+the RAW time axis (code/fix-20261030_trial_events.py, report in code/fix-20261030_trial_events_report.json). The release has no
+alignment code for this step (the authors' GitHub repository holds the statistics only), so the alignment was measured from the
+files: port word 21002 marks each trial start; the sequence of 21002 times matches the behaviour `start_t` sequence at a single
+trial offset in every block (median residual 1-7 ms, next candidate offset 210 ms or more), and a straight line maps behaviour time
+to the RAW axis (slope about 0.99995; residuals up to 2 ms, except the first trial of sub-08 run-02/03, sub-09 run-01 and sub-11
+run-01: 13-15 ms). Event times are `start_t + event_time`; the event words 21004 (fp_on), 21006 (targ_on), 21300 (targ_chg), 21101 (response / window entries) and
+21015 (feedback) lie at a median 0.2-1.2 ms from the mapped times (per row: column `port_check_ms`); fp_off has no word of
+its own.
+- Added for 13 runs (819 trials, 5,107 rows); behaviour trials outside the recording (before the first or after the last start word) are not listed.
+  sub-08 run-02 / run-03 have 13 / 7 start words after the last behaviour trial; those trials have no behaviour rows.
+- Runs with the timing caveat above (sub-04 run-01, sub-11 run-01/05/07, sub-13 run-02) list only trials that end before
+  TimeEnd - TimeBegin; sub-11 run-06 has none.
+- sub-02 run-01 / run-02 are not changed here: they match as well (129 / 159 trials, all paired), but another pending change
+  edits those two files; they will be added on top of it.
+- `condition` is `trial_type_names{trial_type}` as stored in the file ('1mov', '2mov', '1mov_2mov' occur); `result` and `rt` are
+  the stored fields.
+
 ## Localisation
 Recordings were from the STN (article); the side comes from the file names (STNL/STNR). No coordinates or depths are in
 the release; electrodes.tsv lists the channels with x, y, z = n/a.
