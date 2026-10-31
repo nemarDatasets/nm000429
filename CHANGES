@@ -1,6 +1,7 @@
 1.0.3 2026-10-19
   - events.tsv: removed 119 digital-input rows (ttl_up, CDIG_IN_1) after the end of sub-02 run-01 and 99 with negative onsets from sub-02 run-02; each block's .mat holds the digital channel of the whole Alpha Omega file, so these were the other block's events; removed rows kept verbatim in sourcedata/events-removed-v1.0.3/. Signal files unchanged.
   - README.md: section "Digital-input events of the other block" (also: the Sub02/Block01 time-span mismatch is not a pause; onsets exact).
+  - events.tsv: behavioural trial events from the behaviour .mat files aligned to the port words for 15 runs (1,107 trials, 6,873 rows, source_channel behaviour; sub-02 run-01/run-02 written after the row removal above); code/fix-20261030_trial_events.py and its report; README section "Task events from the behaviour files".
 
 1.0.2 2026-10-16
   - Restore the descriptive dataset Name recorded in the v1.0.0 history. Update generated metadata title and source hash.
