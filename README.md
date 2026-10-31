@@ -22,7 +22,8 @@ recordings referenced to the outer cannula; raw signals sampled at 44 kHz.
   contact of the same lead, wideband RAW streams at the acquisition rate (44 kHz; Sub04: 22 kHz, rate from the stored
   sample count and begin/end times). Values: int16 x BitResolution / Gain (both stored per channel) in µV, float32.
 - `events.tsv`: digital port words (CPORT__1) and digital-input rising edges (CDIG_IN_x) on the RAW time axis; see
-  task-interruptedreach_events.json for the time convention. Trial-level behaviour (touch trajectories, trial types) is in
+  task-interruptedreach_events.json for the time convention. The trial events of the behaviour files are added for 15 runs
+  (section "Task events from the behaviour files"); the complete trial-level behaviour (touch trajectories, trial types) is in
   the behaviour .mat files in sourcedata.
 - `sourcedata/dryad-2jm63xsq2/SubXX/BlockYY/`: every file of the subject zips: the complete Alpha Omega export (also the
   online LFP streams at 1.375 kHz, spike segments, digital channels), the behaviour/task .mat and the Plexon spike-time
@@ -40,16 +41,17 @@ the RAW time axis (code/fix-20261030_trial_events.py, report in code/fix-2026103
 alignment code for this step (the authors' GitHub repository holds the statistics only), so the alignment was measured from the
 files: port word 21002 marks each trial start; the sequence of 21002 times matches the behaviour `start_t` sequence at a single
 trial offset in every block (median residual 1-7 ms, next candidate offset 210 ms or more), and a straight line maps behaviour time
-to the RAW axis (slope about 0.99995; residuals up to 2 ms, except the first trial of sub-08 run-02/03, sub-09 run-01 and sub-11
+to the RAW axis (slope about 0.99995; residuals up to 2 ms, except the first trial of sub-02 run-01, sub-08 run-02/03, sub-09 run-01 and sub-11
 run-01: 13-15 ms). Event times are `start_t + event_time`; the event words 21004 (fp_on), 21006 (targ_on), 21300 (targ_chg), 21101 (response / window entries) and
 21015 (feedback) lie at a median 0.2-1.2 ms from the mapped times (per row: column `port_check_ms`); fp_off has no word of
 its own.
-- Added for 13 runs (819 trials, 5,107 rows); behaviour trials outside the recording (before the first or after the last start word) are not listed.
+- Added for 15 runs (1,107 trials, 6,873 rows); behaviour trials outside the recording (before the first or after the last start word) are not listed.
   sub-08 run-02 / run-03 have 13 / 7 start words after the last behaviour trial; those trials have no behaviour rows.
 - Runs with the timing caveat above (sub-04 run-01, sub-11 run-01/05/07, sub-13 run-02) list only trials that end before
-  TimeEnd - TimeBegin; sub-11 run-06 has none.
-- sub-02 run-01 / run-02 are not changed here: they match as well (129 / 159 trials, all paired), but another pending change
-  edits those two files; they will be added on top of it.
+  TimeEnd - TimeBegin; sub-11 run-06 has none. sub-02 run-01 is also listed there, but its span is not a pause (section
+  "Digital-input events of the other block"); all its trials lie inside the data.
+- sub-02 run-01 / run-02: 129 / 159 trials (all behaviour trials, all start words paired; 802 / 964 rows), added after the
+  removal of the other block's `ttl_up` rows described below.
 - `condition` is `trial_type_names{trial_type}` as stored in the file ('1mov', '2mov', '1mov_2mov' occur); `result` and `rt` are
   the stored fields.
 

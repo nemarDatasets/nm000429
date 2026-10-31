@@ -23,16 +23,17 @@ Method (no author code exists for this step; every number below is measured from
   4. Runs whose stored RAW begin/end times span less time than samples / rate (README "Timing caveat"; the RAW
      axis is exact only up to the first possible discontinuity at TimeEnd) keep only trials that end before
      (n_samples - 1) / fs_from_times.
-  5. Runs listed in --skip are not changed (default: sub-02 runs; branch fix-20261018 edits those events.tsv).
+  5. Runs listed in --skip are not changed (default: none). The sub-02 runs were first written with
+     `--skip none --only sub-02` after the fix-20261018 trimming of their ttl_up rows (the alignment uses port words only).
 Original rows (port, ttl_up) are kept unchanged; rerunning the script on its own output gives the same files.
-Usage: python fix-20261030_trial_events.py <bids_root> <dir holding sourcedata/dryad-2jm63xsq2 with the .mat content> [--skip sub-02]
+Usage: python fix-20261030_trial_events.py <bids_root> <dir holding sourcedata/dryad-2jm63xsq2 with the .mat content> [--skip sub-02,...] [--only sub-02,...]
 """
 import csv, json, os, re, sys
 import numpy as np
 import scipy.io as sio
 
 ROOT, MATROOT = sys.argv[1], sys.argv[2]
-SKIP = sys.argv[sys.argv.index("--skip") + 1].split(",") if "--skip" in sys.argv else ["sub-02"]
+SKIP = sys.argv[sys.argv.index("--skip") + 1].split(",") if "--skip" in sys.argv else []
 ONLY = sys.argv[sys.argv.index("--only") + 1].split(",") if "--only" in sys.argv else None
 CODE = {"trial": 21002, "fp_on": 21004, "targ_on": 21006, "targ_chg": 21300, "in_chg_window": 21101,
         "in_knot1_window": 21101, "response": 21101, "feedback": 21015}
