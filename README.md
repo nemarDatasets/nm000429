@@ -22,13 +22,19 @@ recordings referenced to the outer cannula; raw signals sampled at 44 kHz.
   contact of the same lead, wideband RAW streams at the acquisition rate (44 kHz; Sub04: 22 kHz, rate from the stored
   sample count and begin/end times). Values: int16 x BitResolution / Gain (both stored per channel) in µV, float32.
 - `events.tsv`: digital port words (CPORT__1) and digital-input rising edges (CDIG_IN_x) on the RAW time axis; see
-  task-interruptedreach_events.json for the time convention. The trial events of the behaviour files are added for 15 runs
-  (section "Task events from the behaviour files"); the complete trial-level behaviour (touch trajectories, trial types) is in
+  task-interruptedreach_events.json for the time convention. Trial-level behaviour (touch trajectories, trial types) is in
   the behaviour .mat files in sourcedata.
 - `sourcedata/dryad-2jm63xsq2/SubXX/BlockYY/`: every file of the subject zips: the complete Alpha Omega export (also the
   online LFP streams at 1.375 kHz, spike segments, digital channels), the behaviour/task .mat and the Plexon spike-time
   .txt files (sorted units). Changes: MAT-file header dates set to day 01; file names with patient initials and a date
   were renamed (4 files: Sub02_OR_HandR_STNL_Block02.mat, Sub09_HandR_STNL_Block02.mat, plexon_Sub02_OR_HandR_STNL_Block02_spikes1.txt, plexon_Sub02_OR_HandR_STNL_Block02_spikes2.txt).
+
+Updated in version 1.0.3 by the depositors of this NEMAR copy (the published text above is kept unchanged; these items replace or extend it):
+
+- `events.tsv`: digital port words (CPORT__1) and digital-input rising edges (CDIG_IN_x) on the RAW time axis; see
+  task-interruptedreach_events.json for the time convention. The trial events of the behaviour files are added for 15 runs
+  (section "Task events from the behaviour files"); the complete trial-level behaviour (touch trajectories, trial types) is in
+  the behaviour .mat files in sourcedata.
 
 ## Timing caveat
 Sampling rate = the nominal rate stored per channel (_KHz). In some exports the stored begin/end times span more time than
