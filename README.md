@@ -29,10 +29,37 @@ recordings referenced to the outer cannula; raw signals sampled at 44 kHz.
   .txt files (sorted units). Changes: MAT-file header dates set to day 01; file names with patient initials and a date
   were renamed (4 files: Sub02_OR_HandR_STNL_Block02.mat, Sub09_HandR_STNL_Block02.mat, plexon_Sub02_OR_HandR_STNL_Block02_spikes1.txt, plexon_Sub02_OR_HandR_STNL_Block02_spikes2.txt).
 
+Updated in version 1.0.3 by the depositors of this NEMAR copy (the published text above is kept unchanged; these items replace or extend it):
+
+- `events.tsv`: digital port words (CPORT__1) and digital-input rising edges (CDIG_IN_x) on the RAW time axis; see
+  task-interruptedreach_events.json for the time convention. The trial events of the behaviour files are added for 15 runs
+  (section "Task events from the behaviour files"); the complete trial-level behaviour (touch trajectories, trial types) is in
+  the behaviour .mat files in sourcedata.
+
 ## Timing caveat
 Sampling rate = the nominal rate stored per channel (_KHz). In some exports the stored begin/end times span more time than
 samples / rate, which indicates recording pauses concatenated in the export; event onsets there are exact only up to the
 first pause: Sub02/Block01: 29792526 samples over TimeBegin-TimeEnd 1634.2 s (18231.1 Hz vs nominal 44000 Hz); Sub04/Block01: 8873514 samples over TimeBegin-TimeEnd 172.2 s (51522.8 Hz vs nominal 22000 Hz); Sub11/Block01: 29672592 samples over TimeBegin-TimeEnd 133.8 s (221785.2 Hz vs nominal 44000 Hz); Sub11/Block05: 26669440 samples over TimeBegin-TimeEnd 139.9 s (190625.3 Hz vs nominal 44000 Hz); Sub11/Block06: 28558928 samples over TimeBegin-TimeEnd 138.0 s (207009.3 Hz vs nominal 44000 Hz); Sub11/Block07: 27740369 samples over TimeBegin-TimeEnd 135.2 s (205178.1 Hz vs nominal 44000 Hz); Sub13/Block02: 30603712 samples over TimeBegin-TimeEnd 139.1 s (219961.2 Hz vs nominal 44000 Hz).
+
+## Task events from the behaviour files (Oct 2026)
+`events.tsv` rows with `source_channel` = `behaviour` hold the trial events of the behaviour .mat files (sourcedata), placed on
+the RAW time axis (code/fix-20261030_trial_events.py, report in code/fix-20261030_trial_events_report.json). The release has no
+alignment code for this step (the authors' GitHub repository holds the statistics only), so the alignment was measured from the
+files: port word 21002 marks each trial start; the sequence of 21002 times matches the behaviour `start_t` sequence at a single
+trial offset in every block (median residual 1-7 ms, next candidate offset 210 ms or more), and a straight line maps behaviour time
+to the RAW axis (slope about 0.99995; residuals up to 2 ms, except the first trial of sub-02 run-01, sub-08 run-02/03, sub-09 run-01 and sub-11
+run-01: 13-15 ms). Event times are `start_t + event_time`; the event words 21004 (fp_on), 21006 (targ_on), 21300 (targ_chg), 21101 (response / window entries) and
+21015 (feedback) lie at a median 0.2-1.2 ms from the mapped times (per row: column `port_check_ms`); fp_off has no word of
+its own.
+- Added for 15 runs (1,107 trials, 6,873 rows); behaviour trials outside the recording (before the first or after the last start word) are not listed.
+  sub-08 run-02 / run-03 have 13 / 7 start words after the last behaviour trial; those trials have no behaviour rows.
+- Runs with the timing caveat above (sub-04 run-01, sub-11 run-01/05/07, sub-13 run-02) list only trials that end before
+  TimeEnd - TimeBegin; sub-11 run-06 has none. sub-02 run-01 is also listed there, but its span is not a pause (section
+  "Digital-input events of the other block"); all its trials lie inside the data.
+- sub-02 run-01 / run-02: 129 / 159 trials (all behaviour trials, all start words paired; 802 / 964 rows), added after the
+  removal of the other block's `ttl_up` rows described below.
+- `condition` is `trial_type_names{trial_type}` as stored in the file ('1mov', '2mov', '1mov_2mov' occur); `result` and `rt` are
+  the stored fields.
 
 ## Localisation
 Recordings were from the STN (article); the side comes from the file names (STNL/STNR). No coordinates or depths are in
@@ -44,3 +71,23 @@ Age/sex per patient are in the article's Supplementary file 1, which is not link
 ## Privacy
 File names with initials and dates were renamed; MAT headers keep year and month only. String scan of the behaviour .mat
 files: no names, dates or identifiers found.
+
+## Digital-input events of the other block (corrected Oct 2026, version 1.0.3)
+
+Sub02 Block01 and Block02 (`sub-02` run-01 and run-02) are two exports of one Alpha Omega file (`LT1D5.074F0001_block1.mat`,
+`_block2.mat`). Both .mat files contain the same complete digital-input channel `CDIG_IN_1` (218 identical `_Up`/`_Down`
+values, `CDIG_IN_1_TimeBegin` 2826.774 s, `_TimeEnd` 4158.511 s), while the RAW streams and the port words `CPORT__1` are
+per block. The conversion kept only the port words that fall inside each block but wrote all 218 digital-input edges into both
+`events.tsv`. Up to version 1.0.2, run-01 therefore listed 119 `ttl_up` rows after the end of its data (up to 1426.5 s in a
+677.1 s run) and run-02 listed 99 `ttl_up` rows with negative onsets. Each of these rows is the other block's row: the
+119 run-01 rows equal run-02 rows shifted by the difference of the RAW TimeBegin values (3409.0909 - 2731.9880 s) to within
+1e-12 s, and the 99 run-02 rows equal the 99 `ttl_up` rows inside run-01 (shifted the other way, max difference 1.1e-13 s). They are removed from the BIDS files
+(run-01 keeps 99 `ttl_up` rows, run-02 keeps 119) and kept verbatim in `sourcedata/events-removed-v1.0.3/` (same relative paths). No row inside
+a recording was changed; signal files are unchanged.
+
+The "Timing caveat" above lists Sub02/Block01 with 29792526 samples over a TimeBegin-TimeEnd span of 1634.2 s. That span is
+not a recording pause: `CRAW_xx_TimeEnd` in the Block01 file (4366.143 s) is the end of the whole Alpha Omega file, the
+same value as in the Block02 file, and the Block01 RAW samples at 44 kHz end at 2731.9880 + 677.1029 = 3409.0909 s, which is
+the RAW TimeBegin of Block02 (23 us later, about one sample). The run-01 event onsets are therefore exact over the
+whole run (checked in Oct 2026 by reading the TimeBegin/TimeEnd/KHz variables and the CDIG_IN_1 vectors of both .mat files
+in sourcedata).

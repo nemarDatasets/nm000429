@@ -1,27 +1,61 @@
 {
   "onset": {
-    "Description": "Seconds from the first sample of the RAW streams of this run",
+    "Description": "Seconds from the first sample of the RAW streams of this run. Behaviour rows: behaviour PC time mapped to this axis (see _note_behaviour)",
     "Units": "s"
   },
   "duration": {
-    "Description": "0 (instantaneous)",
+    "Description": "0 (instantaneous); 'trial' rows: trial duration end_t - start_t from the behaviour file (scaled by the clock slope)",
     "Units": "s"
   },
   "trial_type": {
-    "Description": "Event source",
+    "Description": "Event source (port, ttl_up) or, for rows with source_channel 'behaviour', the task event name stored in the behaviour file",
     "Levels": {
       "port": "digital port word change (CPORT__1)",
-      "ttl_up": "rising edge on a digital input (CDIG_IN_x_Up)"
+      "ttl_up": "rising edge on a digital input (CDIG_IN_x_Up)",
+      "trial": "behaviour trial (onset start_t, duration end_t - start_t)",
+      "fp_on": "behaviour event fp_on (fixation point on)",
+      "targ_on": "behaviour event targ_on (target on)",
+      "fp_off": "behaviour event fp_off (fixation point off)",
+      "targ_chg": "behaviour event targ_chg (target change)",
+      "in_chg_window": "behaviour event in_chg_window",
+      "in_knot1_window": "behaviour event in_knot1_window",
+      "response": "behaviour event response",
+      "feedback": "behaviour event feedback"
     }
   },
   "value": {
-    "Description": "port: the port word (CPORT__1 row 2); ttl_up: the stored _Up sample number"
+    "Description": "port: the port word (CPORT__1 row 2); ttl_up: the stored _Up sample number; behaviour rows: n/a"
   },
   "sample": {
     "Description": "onset x sampling frequency (0-based)"
   },
   "source_channel": {
-    "Description": "Alpha Omega channel the event comes from"
+    "Description": "Alpha Omega channel the event comes from, or 'behaviour' for rows taken from the behaviour .mat file of the block (sourcedata)"
   },
-  "_note": "port onsets = CPORT__1 timestamp / port clock rate - TimeBegin of the RAW streams (all Alpha Omega timestamps are on one clock). ttl_up onsets = CDIG_IN TimeBegin - RAW TimeBegin + (Up - 1) / digital rate; the first stored Up value is 1, i.e. the digital channel's TimeBegin is taken as the time of sample 1. The task code mapping of port words is in the behaviour files (sourcedata)."
+  "_note": "port onsets = CPORT__1 timestamp / port clock rate - TimeBegin of the RAW streams (all Alpha Omega timestamps are on one clock). ttl_up onsets = CDIG_IN TimeBegin - RAW TimeBegin + (Up - 1) / digital rate; the first stored Up value is 1, i.e. the digital channel's TimeBegin is taken as the time of sample 1. The task code mapping of port words is in the behaviour files (sourcedata).",
+  "trial": {
+    "Description": "Behaviour rows: 1-based index of the trial in trial_data of the behaviour .mat file of this block; n/a for port/ttl_up rows"
+  },
+  "condition": {
+    "Description": "Behaviour rows: trial_type_names{trial_type} of the trial, as stored in the behaviour file",
+    "Levels": {
+      "1mov": "trial type name '1mov' (behaviour file)",
+      "0mov": "trial type name '0mov' (behaviour file)",
+      "1mov_0mov": "trial type name '1mov_0mov' (behaviour file)",
+      "2mov": "trial type name '2mov' (behaviour file)",
+      "1mov_2mov": "trial type name '1mov_2mov' (behaviour file)"
+    }
+  },
+  "result": {
+    "Description": "Behaviour rows: trial result stored in the behaviour file (CORRECT, FIXBREAK, NOCHOICE, NOFIX); n/a when empty"
+  },
+  "rt": {
+    "Description": "Behaviour rows: rt field of the trial in the behaviour file",
+    "Units": "s"
+  },
+  "port_check_ms": {
+    "Description": "Behaviour rows: distance from the row onset to the nearest port word that marks this event (trial 21002, fp_on 21004, targ_on 21006, targ_chg 21300, in_chg_window/in_knot1_window/response 21101, feedback 21015); n/a for fp_off (no word) and port/ttl_up rows",
+    "Units": "ms"
+  },
+  "_note_behaviour": "Behaviour rows (fix-20261030, code/fix-20261030_trial_events.py): the behaviour trials of the block are paired with the trial-start port words 21002 by matching the sequence of trial start times (unique offset, every start word or every trial paired); onset = a * (start_t + event_time) + b, with a, b the least-squares line through the paired start times (a about 0.99995). Added for 15 runs including sub-02 run-01/run-02 (written after the removal of the other block's ttl_up rows, version 1.0.3). Not added: sub-11 run-06 (all trials after the end of the exact time axis); runs with the README timing caveat keep only trials that end before TimeEnd - TimeBegin. Per-run counts in code/fix-20261030_trial_events_report.json."
 }
